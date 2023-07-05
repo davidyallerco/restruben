@@ -1,0 +1,25 @@
+--primero estar conectado como system
+--una vez hecho eso , creamos USUARIO
+create user rest identified by 12345678
+account unlock
+default tablespace users
+quota unlimited on users;
+
+--dar privlegios..
+Grant connect to rest;
+Grant resource to rest;
+Grant create view to rest;
+
+
+--CREAR TABLA
+CREATE TABLE PRODUCTO (
+PRODUCTO_ID NUMERIC(6) NOT NULL PRIMARY KEY,
+NOMBRE VARCHAR(60) NOT NULL UNIQUE,
+PRECIO NUMERIC(6,2) NOT NULL,
+STOCK NUMERIC(4) NOT NULL,
+ESTADO CHAR(1) DEFAULT '1'
+);
+
+
+--CREAR UNA SECUENCIA
+CREATE SEQUENCE SEQ_PRODUCTO;
